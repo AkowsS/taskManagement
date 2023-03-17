@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 
-export const Container = styled("div")({
+export const Container = styled("div")({ 
+  overflowY:"auto",
   padding:"20px 10px 0 0",
   width:"80%",
   display:"flex",
@@ -14,7 +15,7 @@ export const Container = styled("div")({
     input:{
       marginBottom:"10px",
     }
-  }
+  },
 });
 
 export const ButtonAddTask = styled("button")({

@@ -1,9 +1,10 @@
 import { styled } from "@mui/system";
 
 export const Container = styled("div")({
+  justifyContent:"center",
   display:"flex",
   width: "100%",
-  height: "auto",
+  height:"calc(100vh - 154px)",
   h1:{
     fontSize:"1.5em",
     fontFamily: "Roboto, sans-serif",
@@ -14,7 +15,9 @@ export const Container = styled("div")({
   },
 });
 
-export const Menu = styled("div")({
+export const Menu = styled("div")(({theme}) =>({
+  zIndex:"100",
+  left:"0",
   minWidth: "210px",
   maxWidth:"260px",
   width: "20%",
@@ -53,7 +56,13 @@ export const Menu = styled("div")({
       color: "#333333",
     },
   },
-});
+  [theme.breakpoints.down(1140)]: {
+    position:"absolute",
+  },
+  [theme.breakpoints.up(1138)]: {
+    display:"flex !important",
+  },
+}));
 
 export const DivInput = styled("div")({
   width:"100%",
@@ -101,4 +110,20 @@ export const CancelButton = styled("button")({
   fontWeight:"bold",
   outline:"none",
   borderRadius:"5px",
+});
+
+export const ShowMenuButton = styled("img")(({theme}) =>({  
+  height:"50px",
+  position:"absolute",
+  top:"20px",
+  left:"30px",
+  display:"none",
+  [theme.breakpoints.down(1140)]: {
+    display:"block",
+  },
+}));
+
+export const TaskItems = styled("div")({
+  justifyContent:"center",
+  width:"100%",
 });

@@ -4,7 +4,7 @@ export const Container = styled("div")({
   padding:"5px 0 15px 0",
 });
 
-export const DivTask = styled("div")({
+export const DivTask = styled("div")(({theme}) =>({
   padding:"0 20px",
   borderRadius:"10px",
   height:"50px",
@@ -17,7 +17,12 @@ export const DivTask = styled("div")({
     justifyContent:"space-between",
     alignItems:"center",
   },
-});
+  [theme.breakpoints.down(1140)]: {
+    p:{
+      display:"none",
+    }
+  }
+}));
 
 export const DivForm = styled("div")({
   justifyContent:"center",
@@ -56,7 +61,10 @@ export const DeletButton = styled("img")({
 });
 
 
-export const TitleTask = styled("p")({
-  maxWidth:"100px",
-  minWidth:"100px",
+export const TitleTask = styled("h1")({
+  marginTop: "0! important",
+  padding: "0!important",
+  fontSize: "18px ! important",
+  maxWidth: "100px",
+  minWidth: "100px",
 });

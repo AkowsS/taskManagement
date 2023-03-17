@@ -84,19 +84,17 @@ export const TasksList : React.FC<TasksListProps>=({
         :
         <DivForm>
           <form onSubmit={newTask}>
-            <input type="text" name="title" onChange={onInputTitleChange} value={inputTitle}/>
-            <input name="description" id="campotexto" onChange={onInputDescriptionChange} value={inputDescription}/>
+            <input type="text" name="title" placeholder={"Titulo"} onChange={onInputTitleChange} value={inputTitle}/>
+            <input name="description" id="campotexto" placeholder={"Descrição"}onChange={onInputDescriptionChange} value={inputDescription}/>
             <div>
-              <input type="date" aria-label='data inicial' onChange={onChangeInitialDate} value={inputInitialDate}/>
+              <input type="date" aria-label='data inicial'onChange={onChangeInitialDate} value={inputInitialDate}/>
               <input type="date" aria-label='data final' onChange={onChangeFinalDate} value={inputFinalDate}/>
             </div>
             <button type='submit' className="editButton">Editar</button>
-            <button onClick={editTaskButton}>Cancelar</button>
+            <button onClick={editTaskButton}>Fechar</button>
           </form>
         </DivForm>
       }
-      
-      
     </Container>
   );
 };

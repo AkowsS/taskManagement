@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, Menu, DivInput, AddButton, CancelButton } from "./Main.styles";
+import { Container, Menu, DivInput, AddButton, CancelButton, ShowMenuButton ,TaskItems} from "./Main.styles";
 import AddIcon from "@mui/icons-material/Add";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { DatesList } from "../DatesList";
 import { RootState } from "store";
 import { MenuItems } from "../MenuItems";
 import { addProject } from "../../store/projectSlicer";
-import {changeProject} from "../../store/projectSlicer";
+import MenuIten from "../../assets/icons/menu.png";
 
 export const Main : React.FC = () => {
   
@@ -14,7 +14,8 @@ export const Main : React.FC = () => {
   const[addProjectName, setAddProjectName] = React.useState("");
   const [inbox, today, week, ...projects] = useSelector((state:RootState) => state.project.projects);
   const dispatch = useDispatch();
-
+  const [openMenu, setOpenMenu] = React.useState(true);
+ 
   const onChangeInputProject = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setAddProjectName(evt.target.value);
   };
@@ -30,9 +31,17 @@ export const Main : React.FC = () => {
     dispatch(addProject(addProjectName));
     onCancelNewProject();
   };
+  const onShowMenu = () => {
+    if(openMenu == false){
+      return setOpenMenu(true);
+    }else{
+      return setOpenMenu(false);
+    };
+  }
   return (
-    <Container>
-      <Menu>
+    <Container >
+      <ShowMenuButton onClick={onShowMenu} src={MenuIten}/>
+      <Menu style={openMenu === false?{display:"none"}:{display:"block"}}>
         <ul>
           <MenuItems
             key={inbox.id}
@@ -77,7 +86,7 @@ export const Main : React.FC = () => {
           </div>
         </DivInput>
       </Menu>
-        <DatesList/>
+        <DatesList />
     </Container>
   );
 };
